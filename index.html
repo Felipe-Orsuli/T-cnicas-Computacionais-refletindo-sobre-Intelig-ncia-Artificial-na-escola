@@ -4,13 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Você decide o futuro da IA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --cor-fundo: #13f3b0;
+            --cor-principal: #013342;
+            --cor-secundaria: #280e5a;
+            --cor-destaque: #070707;
+            --cor-texto: #D7F9FF;
+            --cor-hover: #37ebff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .caixa-principal {
+            background-color: var(--cor-principal);
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(43, 222, 253, 0.15);
+            border: 1px solid rgba(43, 222, 253, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        h1, .caixa-perguntas, .caixa-resultado h2 {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        h1 {
+            color: var(--cor-destaque);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(43, 222, 253, 0.4);
+        }
+
+        .tela-inicial p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            text-align: justify;
+            color: #b0e8f5;
+        }
+
+        .caixa-perguntas {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffffff;
+            line-height: 1.5;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .caixa-alternativas {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: var(--cor-secundaria);
+            color: var(--cor-texto);
+            border: 1px solid rgba(43, 222, 253, 0.3);
+            border-radius: 12px;
+            padding: 16px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        button:hover {
+            background-color: var(--cor-destaque);
+            color: var(--cor-principal);
+            font-weight: 700;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(43, 222, 253, 0.4);
+            border-color: var(--cor-destaque);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .iniciar-btn, .novamente-btn {
+            font-family: 'Chakra Petch', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: auto;
+            min-width: 200px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--cor-secundaria), #12182d);
+            border: 1px solid var(--cor-destaque);
+        }
+
+        .iniciar-btn:hover, .novamente-btn:hover {
+            background: var(--cor-destaque);
+            color: var(--cor-principal);
+        }
+
+        .caixa-resultado {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .caixa-resultado.mostrar {
+            display: block;
+        }
+
+        .texto-resultado {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            background-color: rgba(33, 35, 51, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--cor-destaque);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+            
+            .caixa-principal {
+                padding: 20px 15px;
+            }
+
+            .caixa-perguntas {
+                font-size: 1.1rem;
+            }
+
+            button {
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <div class="caixa-principal">
         <h1>Você decide o futuro da IA</h1>
+        
         <div class="tela-inicial">
             <p>Novembro de 2022, a humanidade se viu em uma realidade perturbadora.
                 De repente, percebemos que as máquinas evoluíram para além do que imaginávamos.
@@ -23,16 +198,148 @@
             </p>
             <button class="iniciar-btn">Iniciar</button>
         </div>
+
         <div class="caixa-perguntas"></div>
         <div class="caixa-alternativas"></div>
+        
         <div class="caixa-resultado">
             <p class="texto-resultado"></p>
             <button class="novamente-btn">Jogar novamente</button>
         </div>
     </div>
-    <script type="module" src="js/aleatorio.js"></script>
-    <script type="module" src="js/perguntas.js"></script>
-    <script type="module" src="js/script.js"></script>
+
+    <script>
+        // Elementos da interface
+        const telaInicial = document.querySelector('.tela-inicial');
+        const iniciarBtn = document.querySelector('.iniciar-btn');
+        const caixaPerguntas = document.querySelector('.caixa-perguntas');
+        const caixaAlternativas = document.querySelector('.caixa-alternativas');
+        const caixaResultado = document.querySelector('.caixa-resultado');
+        const textoResultado = document.querySelector('.texto-resultado');
+        const novamenteBtn = document.querySelector('.novamente-btn');
+
+        // Perguntas do jogo e suas consequências na história final
+        const perguntas = [
+            {
+                enunciado: "Assim que saiu da escola, você se depara com uma nova tecnologia: um chat com inteligência artificial capaz de responder a qualquer dúvida e gerar textos impressionantes. Qual é a sua primeira reação?",
+                alternativas: [
+                    {
+                        texto: "Isso é assustador! Pode tomar nossos empregos e alienar a sociedade.",
+                        afirmacao: "No início, você sentiu receio sobre o avanço acelerado da automação e buscou compreender o impacto ético das novas ferramentas."
+                    },
+                    {
+                        texto: "Isso é incrível! Vou usar para otimizar meus estudos e rotina diária.",
+                        afirmacao: "Desde o primeiro momento, você abraçou a inovação, enxergando a IA como uma aliada poderosa para o seu desenvolvimento."
+                    }
+                ]
+            },
+            {
+                enunciado: "Sua professora de tecnologia pede um trabalho sobre o impacto das IAs na educação. Como você escolhe realizar a pesquisa?",
+                alternativas: [
+                    {
+                        texto: "Utilizo uma IA generativa para coletar ideias e organizar a estrutura do texto, revisando tudo manualmente.",
+                        afirmacao: "Aprendeu a colaborar com algoritmos de forma consciente, usando a máquina para expandir sua produtividade sem perder sua voz autoral."
+                    },
+                    {
+                        texto: "Escrevo o trabalho totalmente baseado em livros e pesquisas tradicionais, evitando depender de sistemas automáticos.",
+                        afirmacao: "Manteve um forte apego ao pensamento crítico tradicional, preservando métodos humanos e garantindo total independência do código."
+                    }
+                ]
+            },
+            {
+                enunciado: "Durante um debate em sala, surge o tema sobre o uso de IA na criação de artes e músicas. Qual posição você defende?",
+                alternativas: [
+                    {
+                        texto: "A IA é apenas uma ferramenta; a verdadeira criatividade continua sendo uma essência exclusivamente humana.",
+                        afirmacao: "Ficou do lado dos artistas humanos, defendendo que a sensibilidade e as emoções genuínas jamais serão replicadas por linhas de código."
+                    },
+                    {
+                        texto: "Devemos aceitar a arte gerada por IA como uma nova forma legítima de expressão artística digital.",
+                        afirmacao: "Defendeu a fusão entre arte e tecnologia, acreditando no surgimento de uma nova era de expressão artística híbrida."
+                    }
+                ]
+            },
+            {
+                enunciado: "Um colega usou IA para criar uma imagem falsa e espalhar um boato. O que você faz diante dessa situação?",
+                alternativas: [
+                    {
+                        texto: "Denuncio o conteúdo e proponho uma campanha de conscientização contra deepfakes e desinformação.",
+                        afirmacao: "Tornou-se um defensor da ética digital, alertando sobre os perigos da manipulação de imagem e notícias falsas."
+                    },
+                    {
+                        texto: "Ignoro e sigo em frente, pois acredito que as pessoas devam aprender sozinhas a checar a veracidade das coisas.",
+                        afirmacao: "Preferiu focar no seu próprio caminho, acreditando que a adaptação às novas tecnologias é uma responsabilidade individual."
+                    }
+                ]
+            },
+            {
+                enunciado: "No futuro, você precisa escolher sua área de atuação profissional. Como você se posiciona no mercado com relação à IA?",
+                alternativas: [
+                    {
+                        texto: "Vou me especializar em desenvolvimento e regulamentação éticas de IA para garantir a segurança de todos.",
+                        afirmacao: "Por fim, dedicou seus esforços para moldar as diretrizes do futuro, garantindo que a tecnologia sirva à humanidade com segurança e transparência."
+                    },
+                    {
+                        texto: "Vou aprender a aplicar IAs para automatizar processos e liderar projetos de alta performance no mercado.",
+                        afirmacao: "Por fim, tornou-se um líder de inovação, impulsionando a eficiência e criando soluções revolucionárias impulsionadas por inteligência sintética."
+                    }
+                ]
+            }
+        ];
+
+        // Variáveis de controle de estado
+        let posicaoAtual = 0;
+        let historiaFinal = "";
+
+        iniciarBtn.addEventListener('click', iniciarJogo);
+        novamenteBtn.addEventListener('click', reiniciarJogo);
+
+        function iniciarJogo() {
+            telaInicial.style.display = 'none';
+            posicaoAtual = 0;
+            historiaFinal = "";
+            caixaResultado.classList.remove('mostrar');
+            mostraPergunta();
+        }
+
+        function mostraPergunta() {
+            if (posicaoAtual >= perguntas.length) {
+                exibeResultado();
+                return;
+            }
+
+            const perguntaAtual = perguntas[posicaoAtual];
+            caixaPerguntas.textContent = perguntaAtual.enunciado;
+            caixaAlternativas.textContent = "";
+
+            perguntaAtual.alternativas.forEach((alternativa) => {
+                const botaoAlternativas = document.createElement("button");
+                botaoAlternativas.textContent = alternativa.texto;
+                botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
+                caixaAlternativas.appendChild(botaoAlternativas);
+            });
+        }
+
+        function respostaSelecionada(opcaoSelecionada) {
+            historiaFinal += opcaoSelecionada.afirmacao + " ";
+            posicaoAtual++;
+            mostraPergunta();
+        }
+
+        function exibeResultado() {
+            caixaPerguntas.textContent = "Em 2030...";
+            caixaAlternativas.textContent = "";
+            textoResultado.textContent = historiaFinal.trim();
+            caixaResultado.classList.add('mostrar');
+        }
+
+        function reiniciarJogo() {
+            caixaResultado.classList.remove('mostrar');
+            telaInicial.style.display = 'block';
+            caixaPerguntas.textContent = "";
+            caixaAlternativas.textContent = "";
+        }
+    </script>
 </body>
 
 </html>
